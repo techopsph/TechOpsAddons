@@ -1,5 +1,6 @@
 {
     "name": "Partner Social Media",
+    "summary": "Social Media Links for a Contact",
     "category": "Partner Contacts",
     "version": "17.0",
     "license": "AGPL-3",
@@ -12,6 +13,5 @@
         "views/res_partner_view.xml",
     ],
     "author": "Tech Ops PH",
-    "website": "https://github.com/OCA/partner-contact",
-    "development_status": "Production/Stable",
+    "website": "https://github.com/OCA/partner-contact"
 }

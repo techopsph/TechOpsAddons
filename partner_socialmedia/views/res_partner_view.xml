@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record model="ir.ui.view" id="view_partner_form">
         <field name="name">res.partner.form.socialmedia</field>
@@ -21,7 +20,7 @@
                             <field name="name" />
                             <field name="account_id" optional="hide"/>
                             <field name="full_url" />
-                            <field name="full_url_manual" optional="show"/>
+                            <field name="full_url_manual" widget="url" optional="show"/>
                             <field name="active" optional="hide"/>
                         </tree>
                     </field>

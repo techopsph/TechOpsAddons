@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
         <record id="socialmedia_platform_facebook" model="res.partner.socialmedia_platform">

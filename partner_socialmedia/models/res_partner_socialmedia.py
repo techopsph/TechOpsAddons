@@ -47,5 +47,8 @@ class ResPartnerSocialMedia(models.Model):
             if rec.full_url_manual:
                 rec.full_url = rec.full_url_manual
             else:
-                rec.full_url = rec.platform_id.website + "/" + rec.name
+                if rec.platform_id.website and rec.name:
+                    rec.full_url = rec.platform_id.website + "/" + rec.name
+                else:
+                    rec.full_url = False
             
