@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="socialmedia_platform_facebook" model="res.partner.socialmedia_platform">
+            <field name="name">Facebook</field>
+            <field name="website">www.facebook.com</field>
+            <field name="icon">fa fa-facebook</field>
+        </record>
+        <record id="socialmedia_platform_instagram" model="res.partner.socialmedia_platform">
+            <field name="name">Instagram</field>
+            <field name="website">www.instagram.com</field>
+            <field name="icon">fa fa-instagram</field>
+        </record>
+        <record id="socialmedia_platform_tiktok" model="res.partner.socialmedia_platform">
+            <field name="name">Tiktok</field>
+            <field name="website">www.tiktok.com</field>
+            <field name="icon">fa fa-tiktok</field>
+        </record>
+        <record id="socialmedia_platform_pinterest" model="res.partner.socialmedia_platform">
+            <field name="name">Pinterest</field>
+            <field name="website">www.pinterest.com</field>
+            <field name="icon">fa fa-pinterest</field>
+        </record>
+        <record id="socialmedia_platform_twitter" model="res.partner.socialmedia_platform">
+            <field name="name">Twitter</field>
+            <field name="website">www.twitter.com</field>
+            <field name="icon">fa fa-twitter</field>
+        </record>
+        <record id="socialmedia_platform_linkedin" model="res.partner.socialmedia_platform">
+            <field name="name">LinkedIn</field>
+            <field name="website">www.linkedin.com</field>
+            <field name="icon">fa fa-linkedin</field>
+        </record>
+        <record id="socialmedia_platform_youtube" model="res.partner.socialmedia_platform">
+            <field name="name">YouTube</field>
+            <field name="website">www.youtube.com</field>
+            <field name="icon">fa fa-youtube</field>
+        </record>
+        <record id="socialmedia_platform_snapchat" model="res.partner.socialmedia_platform">
+            <field name="name">Snapchat</field>
+            <field name="website">www.snapchat.com</field>
+            <field name="icon">fa fa-snapchat</field>
+        </record>
+        <record id="socialmedia_platform_whatsapp" model="res.partner.socialmedia_platform">
+            <field name="name">WhatsApp</field>
+            <field name="website">www.whatsapp.com</field>
+            <field name="icon">fa fa-whatsapp</field>
+        </record>
+        <record id="socialmedia_platform_telegram" model="res.partner.socialmedia_platform">
+            <field name="name">Telegram</field>
+            <field name="website">www.telegram.com</field>
+            <field name="icon">fa fa-telegram</field>
+        </record>
+        <record id="socialmedia_platform_viber" model="res.partner.socialmedia_platform">
+            <field name="name">Viber</field>
+            <field name="website">www.viber.com</field>
+            <field name="icon">fa fa-viber</field>
+        </record>
+        <record id="socialmedia_platform_skype" model="res.partner.socialmedia_platform">
+            <field name="name">Skype</field>
+            <field name="website">www.skype.com</field>
+            <field name="icon">fa fa-skype</field>
+        </record>
+        <record id="socialmedia_platform_messenger" model="res.partner.socialmedia_platform">
+            <field name="name">Messenger</field>
+            <field name="website">www.messenger.com</field>
+            <field name="icon">fa fa-messenger</field>
+        </record>
+        <record id="socialmedia_platform_vimeo" model="res.partner.socialmedia_platform">
+            <field name="name">Vimeo</field>
+            <field name="website">www.vimeo.com</field>
+            <field name="icon">fa fa-vimeo</field>
+        </record>
+        <record id="socialmedia_platform_flickr" model="res.partner.socialmedia_platform">
+            <field name="name">Flickr</field>
+            <field name="website">www.flickr.com</field>
+            <field name="icon">fa fa-flickr</field>
+        </record>
+        <record id="socialmedia_platform_reddit" model="res.partner.socialmedia_platform">
+            <field name="name">Reddit</field>
+            <field name="website">www.reddit.com</field>
+            <field name="icon">fa fa-reddit</field>
+        </record>
+        <record id="socialmedia_platform_tumblr" model="res.partner.socialmedia_platform">
+            <field name="name">Tumblr</field>
+            <field name="website">www.tumblr.com</field>
+            <field name="icon">fa fa-tumblr</field>
+        </record>
+        <record id="socialmedia_platform_foursquare" model="res.partner.socialmedia_platform">
+            <field name="name">Foursquare</field>
+            <field name="website">www.foursquare.com</field>
+            <field name="icon">fa fa-foursquare</field>
+        </record>
+        <record id="socialmedia_platform_yelp" model="res.partner.socialmedia_platform">
+            <field name="name">Yelp</field>
+            <field name="website">www.yelp.com</field>
+            <field name="icon">fa fa-yelp</field>
+        </record>
+        <record id="socialmedia_platform_tripadvisor" model="res.partner.socialmedia_platform">
+            <field name="name">TripAdvisor</field>
+            <field name="website">www.tripadvisor.com</field>
+            <field name="icon">fa fa-tripadvisor</field>
+        </record>
+        <record id="socialmedia_platform_yahoo" model="res.partner.socialmedia_platform">
+            <field name="name">Yahoo</field>
+            <field name="website">www.yahoo.com</field>
+            <field name="icon">fa fa-yahoo</field>
+        </record>
+        <record id="socialmedia_platform_google" model="res.partner.socialmedia_platform">
+            <field name="name">Google</field>
+            <field name="website">www.google.com</field>
+            <field name="icon">fa fa-google</field>
+        </record>
+        <record id="socialmedia_platform_bing" model="res.partner.socialmedia_platform">
+            <field name="name">Bing</field>
+            <field name="website">www.bing.com</field>
+            <field name="icon">fa fa-bing</field>
+        </record>
+    </data>
+
+</odoo>
