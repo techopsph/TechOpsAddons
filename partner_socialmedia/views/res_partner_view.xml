@@ -19,8 +19,8 @@
                             <field name="platform_id" />
                             <field name="name" />
                             <field name="account_id" optional="hide"/>
-                            <field name="full_url" />
-                            <field name="full_url_manual" widget="url" optional="show"/>
+                            <field name="full_url" widget="url" />
+                            <field name="full_url_manual" optional="show"/>
                             <field name="active" optional="hide"/>
                         </tree>
                     </field>
