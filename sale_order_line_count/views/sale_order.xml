@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="sale_view_order_form">
+      <field name="name">sale_order_line_count.sale_view_order_form</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="priority" eval="100"/>
+      <field name="arch" type="xml">
+        <data>
+
+          <field name="order_line" position="after">
+            <group name="order_details">
+              <field name="order_line_count"/>
+            </group>
+          </field>
+        </data>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sale_order_tree">
+      <field name="name">sale_order_line_count.sale_order_tree</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_tree"/>
+      <field name="priority" eval="100"/>
+      <field name="arch" type="xml">
+        <data>
+          <field name="validity_date" position="after">
+            <field name="order_line_count" optional="hide"/>
+          </field>
+        </data>
+      </field>
+    </record>
+
+  </data>
+</odoo>
