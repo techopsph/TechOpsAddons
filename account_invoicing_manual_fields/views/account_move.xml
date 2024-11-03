@@ -1,0 +1,45 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="view_move_form">
+      <field name="name">account_invoicing_manual_fields.view_move_form</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_move_form"/>
+      <field name="priority" eval="100"/>
+      <field name="arch" type="xml">
+        <data>
+          
+          <xpath expr="//sheet//group/field[@name='currency_id']" position="after">
+            <field name="sales_invoice_number"/>
+            <field name="document_number"/>
+            <field name="remarks"/>
+            <field name="prepared_by"/>
+            <field name="approved_by"/>
+          </xpath>
+
+        </data>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_invoice_tree">
+      <field name="name">account_invoicing_manual_fields.view_invoice_tree</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_invoice_tree"/>
+      <field name="priority" eval="100"/>
+      <field name="arch" type="xml">
+        <data>
+          
+          <field name="move_type" position="after">
+            <field name="sales_invoice_number" optional="hide"/>
+            <field name="document_number" optional="hide"/>
+            <field name="remarks" optional="hide"/>
+            <field name="prepared_by" optional="hide"/>
+            <field name="approved_by" optional="hide"/>
+          </field>
+
+        </data>
+      </field>
+    </record>
+
+  </data>
+</odoo>
