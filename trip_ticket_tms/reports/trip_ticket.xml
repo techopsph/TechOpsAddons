@@ -7,7 +7,7 @@
             <t t-call="web.external_layout">
             
                 <div class="page" style="page-break-after:always; padding-top: 30mm;">
-                    <!-- div class="spacer" style="min-height: 15mm; margin-bottom: 15mm;"></div -->
+                    <div class="spacer" style="min-height: 2mm; margin-bottom: 2mm;"></div>
                     <div class="row">
                         <div class="col-7">
                         <h4>DAILY TRIP TICKET</h4>
@@ -73,9 +73,7 @@
                                     <th width="12%">SO Customer</th>
                                     <th width="12%">Delivery Via</th>
                                     <th width="5%">SO#</th>
-                                    <th width="5%"># Cartons</th>
                                     <th width="7%">DR#</th>
-                                    <th width="7%">Amount</th>
                                     <th width="5%">Time In</th>
                                     <th width="5%">Time Out</th>
                                     <th width="7%">Client Ref</th>
@@ -172,14 +170,6 @@
                                         <t t-set="sale_picking_ids" t-value="trip.sale_id.picking_ids" />
                                         
                                         <td>
-                                        <t t-foreach="sale_picking_ids" t-as="sale_picking_id">
-                                            <t t-if="'PACK' in sale_picking_id.name and sale_picking_id.state == 'done'">
-                                            <span t-field="sale_picking_id.no_of_cartons_manual"/>
-                                            </t>
-                                        </t>
-                                        <!-- span t-field="trip.no_of_cartons_manual"/ -->
-                                        </td>
-                                        <td>
                                         <t t-if="has_consignment == 'True'">
                                             <t t-foreach="sale_picking_ids" t-as="sale_picking_id">
                                             <t t-if="'PACK' in sale_picking_id.name and sale_picking_id.state == 'done'">
@@ -201,16 +191,7 @@
                                             </t>
                                         </t>
                                         </td>
-                                        
-                                        <td>
-                                        <!-- t t-if="trip.state == 'done'">
-                                            <span t-field="trip.total_value"/>
-                                        </t>
-                                        <t t-else="">
-                                            <span t-field="trip.total_value_pack"/>
-                                        </t-->
-                                        </td>
-                                        
+                                                                                
                                         <td></td>
                                         <td></td>
                                         <td><span t-field="trip.sale_id.client_order_ref"/></td>
