@@ -11,9 +11,12 @@
     "depends": ["sale_stock", "fleet", "contacts"],
     "data": [ 
         "data/crm_tag.xml",
+        "data/report_paperformat.xml",
+        "data/ir_actions_report.xml",
         "data/ir_sequence_data.xml",
         "security/trip_ticket.xml",
         "security/ir.model.access.csv",
+        "reports/trip_ticket.xml",
         "views/menu_actions.xml",
         "views/stock_picking.xml",
         "views/trip_ticket.xml",

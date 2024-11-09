@@ -38,6 +38,7 @@ class StockPicking(models.Model):
                                             readonly=True,
                                             ondelete="restrict",
                                             copy=True)
+     
     
     def _compute_sequence(self):
         for rec in self:

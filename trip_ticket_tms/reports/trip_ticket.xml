@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_trip_ticket">
+        
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+            
+                <div class="page" style="page-break-after:always; padding-top: 30mm;">
+                    <!-- div class="spacer" style="min-height: 15mm; margin-bottom: 15mm;"></div -->
+                    <div class="row">
+                        <div class="col-7">
+                        <h4>DAILY TRIP TICKET</h4>
+                        </div>
+                        <div class="col-5">
+                        <h5><span t-field="docs.name"/></h5>
+                        </div>
+                    </div>
+                    
+                    <div id="trip_ticket_header" class="row">
+                        <t t-set="trip_ticket" t-value="docs"/>
+                        <div class="col-7">
+                            <strong>Scheduled Date:</strong>
+                            <t t-if="trip_ticket.scheduled_date">
+                            <span t-field="trip_ticket.scheduled_date"/>
+                            </t><br/>
+                            <strong>Vehicle:</strong>
+                            <t t-if="trip_ticket.vehicle_id">
+                                <span t-field="trip_ticket.vehicle_id"/>
+                            </t><br/>
+                            <strong>Driver:</strong>
+                            <t t-if="trip_ticket.driver">
+                                <span t-field="trip_ticket.driver"/>
+                            </t><br/>
+                            <strong>Helpers:</strong>
+                            <t t-if="trip_ticket.helper">
+                                <span t-field="trip_ticket.helper"/>
+                                <t t-if="trip_ticket.helper2">
+                                <span t-field="trip_ticket.helper2"/>
+                                </t>
+                            </t>
+                            <t t-if="trip_ticket.helpers">
+                                <t t-foreach="trip_ticket.helpers" t-as="helper">
+                                <span t-esc="helper.name"/>  
+                                </t>
+                            </t><br/>
+                        </div>
+                            <div class="col-7">
+                            <strong>Loading Start:</strong>
+                            <t t-if="trip_ticket.loading_start_datetime">
+                            <span t-field="trip_ticket.loading_start_datetime"/>
+                            </t><br/>
+                            <strong>Loading Finish:</strong>
+                            <t t-if="trip_ticket.loading_end_datetime">
+                                <span t-field="trip_ticket.loading_end_datetime"/>
+                            </t><br/>
+                            <strong>Departure:</strong>
+                            <t t-if="trip_ticket.departure_datetime">
+                                <span t-field="trip_ticket.departure_datetime"/>
+                            </t><br/>
+                            <strong>Arrival:</strong>
+                            <t t-if="trip_ticket.arrival_datetime">
+                                <span t-field="trip_ticket.arrival_datetime"/>
+                            </t><br/>
+                        </div>
+                    </div>
+                    
+                    
+                    <table class="table table-condensed" style="font-size: 90%; margin-top: 5mm;">
+                            <thead>
+                                <tr>
+                                    <th width="5%">Type</th>
+                                    <th width="12%">SO Customer</th>
+                                    <th width="12%">Delivery Via</th>
+                                    <th width="5%">SO#</th>
+                                    <th width="5%"># Cartons</th>
+                                    <th width="7%">DR#</th>
+                                    <th width="7%">Amount</th>
+                                    <th width="5%">Time In</th>
+                                    <th width="5%">Time Out</th>
+                                    <th width="7%">Client Ref</th>
+                                    <th width="14%">Remarks</th>
+                                    <th width="5%">Tags</th>
+                                    <th width="7%">Signature</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <t t-set="row_counter" t-value="0"/>
+                                
+                                <t t-if="trip_ticket.trip_sequence == 'by_region_so_branch'">
+                                    <t t-set="trips_ordered" t-value="trip_ticket.picking_ids.sorted(key=lambda x: (x.company_id.name, x.partner_id.team_id, x.partner_id.name, x.origin))"/>
+                                </t>
+                                <t t-if="trip_ticket.trip_sequence == 'by_sales_order'">
+                                    <t t-set="trips_ordered" t-value="trip_ticket.picking_ids.sorted(key=lambda x: x.origin)"/>
+                                </t>
+                                <t t-if="trip_ticket.trip_sequence == 'by_sequence'">
+                                    <t t-set="trips_ordered" t-value="trip_ticket.picking_ids.sorted(key=lambda x: x.trip_ticket_sequence)"/>
+                                </t>
+                                <t t-else="">
+                                    <t t-set="trips_ordered" t-value="trip_ticket.picking_ids.sorted(key=lambda x: x.trip_ticket_sequence)"/>
+                                </t>
+                                
+                                <t t-foreach="trips_ordered" t-as="trip">
+                                    <t t-set="has_consignment" t-value="'False'"/>
+                                    <!-- t t-if="trip.sales_order_tags">
+                                        <t t-foreach="trip.sales_order_tags" t-as="tags">
+                                        <t t-if="tags.name == 'Consignment'">
+                                            <t t-set="has_consignment" t-value="'True'"/>
+                                        </t>
+                                        </t>
+                                    </t -->
+                                    
+                                    <t t-set="row_counter" t-value="row_counter + 1"/>
+                                    <tr>
+                                        
+                                        <td>
+                                        <span t-esc="row_counter"/> | <span t-field="trip.picking_type_id.code"/><br/>
+                                        <span t-field="trip.company_id.partner_id.ref"/>
+                                        </td>
+                                        
+                                        
+                                        <t t-if="has_consignment == 'False'">
+                                        
+                                        <!-- t t-if="trip.delivery_via">
+                                            <td>
+                                            <span t-field="trip.partner_id"/><br/>
+                                            <span t-field="trip.partner_id.phone"/> 
+                                            <span t-field="trip.partner_id.mobile"/>
+                                            </td>
+                                            <td>
+                                            <span t-field="trip.delivery_via"/><br/>
+                                            <span t-field="trip.delivery_via.phone"/> 
+                                            <span t-field="trip.delivery_via.mobile"/>
+                                            </td>  
+                                        </t -->
+                                        <!-- t t-else="" -->
+                                            <td>
+                                            <span t-field="trip.sale_order_customer"/><br/>
+                                            <span t-field="trip.sale_order_customer.phone"/> 
+                                            <span t-field="trip.sale_order_customer.mobile"/>
+                                            </td>
+                                            <td>
+                                            <span t-field="trip.partner_id"/><br/>
+                                            <span t-field="trip.partner_id.phone"/> 
+                                            <span t-field="trip.partner_id.mobile"/>
+                                            </td>  
+                                        <!-- /t -->
+                                        
+                                        </t>
+                                        <t t-else="">
+                                        <td>
+                                            <span t-field="trip.partner_id"/><br/>
+                                            <span t-field="trip.partner_id.phone"/> 
+                                            <span t-field="trip.partner_id.mobile"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="trip.delivery_via"/><br/>
+                                            <span t-field="trip.delivery_via.phone"/> 
+                                            <span t-field="trip.delivery_via.mobile"/>
+                                        </td>  
+                                        </t>
+                                        
+                                        <td>
+                                        <span t-field="trip.origin"/><br/>
+                                        <t t-set="location_names" t-value="trip.move_line_ids_without_package.mapped('location_id.complete_name')"/>
+                                        <t t-foreach="location_names" t-as="location_name">
+                                            <span t-esc="location_name"/>  
+                                        </t>
+                                        </td>
+                                        
+                                        <t t-set="sale_picking_ids" t-value="trip.sale_id.picking_ids" />
+                                        
+                                        <td>
+                                        <t t-foreach="sale_picking_ids" t-as="sale_picking_id">
+                                            <t t-if="'PACK' in sale_picking_id.name and sale_picking_id.state == 'done'">
+                                            <span t-field="sale_picking_id.no_of_cartons_manual"/>
+                                            </t>
+                                        </t>
+                                        <!-- span t-field="trip.no_of_cartons_manual"/ -->
+                                        </td>
+                                        <td>
+                                        <t t-if="has_consignment == 'True'">
+                                            <t t-foreach="sale_picking_ids" t-as="sale_picking_id">
+                                            <t t-if="'PACK' in sale_picking_id.name and sale_picking_id.state == 'done'">
+                                                <span t-field="sale_picking_id.name"/>
+                                            </t>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-if="trip.sale_id.invoice_ids">
+                                            <t t-foreach="trip.sale_id.invoice_ids" t-as="invoice">
+                                                <t t-if="invoice.document_number">
+                                                <span t-field="invoice.document_number"/>
+                                                </t>
+                                                <t t-if="invoice.sales_invoice_number">
+                                                <span t-field="invoice.sales_invoice_number"/>
+                                                </t>
+                                                <span t-field="invoice.name"/><br/>
+                                            </t>  
+                                            </t>
+                                        </t>
+                                        </td>
+                                        
+                                        <td>
+                                        <!-- t t-if="trip.state == 'done'">
+                                            <span t-field="trip.total_value"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-field="trip.total_value_pack"/>
+                                        </t-->
+                                        </td>
+                                        
+                                        <td></td>
+                                        <td></td>
+                                        <td><span t-field="trip.sale_id.client_order_ref"/></td>
+                                        <td>
+                                        <t t-if="trip.note">
+                                            Note:<span t-field="trip.note"/><br/>
+                                        </t>
+                                        
+                                        <t t-if="trip.sale_id.note">
+                                            <!-- SO Status: <span t-esc="trip.sale_id.monitoring_status"/> <br/> --> 
+                                            <span t-esc="trip.sale_id.note[:50]"/>  
+                                        </t>
+                                        </td>
+                                        <td>
+                                        <!-- t t-if="trip.sales_order_tags">
+                                            <t t-foreach="trip.sales_order_tags" t-as="tags">
+                                            <span t-field="tags.name"/>
+                                            </t>
+                                        </t-->
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    
+                                    <t t-if="(row_counter % 16) == 0">
+                                        <tr style="page-break-before:always;"><td colspan="12"><div class="spacer" style="min-height: 5mm; margin-bottom: 5mm;"></div></td></tr>
+                                    </t>
+                                    
+                                    
+                                </t>
+                            </tbody>
+                        </table>
+                    
+                    <div id="trip_ticket_notes" class="row">
+                        <div class="col-7">
+                            <strong>Notes:</strong>
+                            <t t-if="trip_ticket.note">
+                            <span t-field="trip_ticket.note"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            
+        </t>
+
+    </template>
+
+</odoo>

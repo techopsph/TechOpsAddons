@@ -4,7 +4,7 @@
     <record id="action_trip_tickets" model="ir.actions.act_window">
         <field name="name">Trip Tickets</field>
         <field name="res_model">trip.ticket</field>
-        <field name="view_mode">tree,form,kanban,calendar,pivot</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
         <field name="context">{ 'default_scheduled_date': current_date, 'default_name': 'TRIP/' }</field>
         <!-- field name="context">{ 'default_scheduled_date': current_date, 'default_name': 'TRIP/' + current_date + '/' }</field -->
     </record>

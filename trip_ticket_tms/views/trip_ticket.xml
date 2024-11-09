@@ -15,8 +15,11 @@
                     <button name="action_in_transit" invisible="state != 'loading_end'" string="Trip Start" type="object" class="oe_highlight" groups="trip_ticket_tms.group_trip_ticket_user" data-hotkey="w"/>
                     <button name="action_delivered" invisible="state != 'in_transit'" string="Delivered" type="object" class="oe_highlight" groups="trip_ticket_tms.group_trip_ticket_user" data-hotkey="w"/>
                     <button name="action_done" invisible="state != 'delivered'" string="Set to Done" type="object" class="oe_highlight" groups="trip_ticket_tms.group_trip_ticket_user" data-hotkey="w"/>
-                    <button name="action_draft" invisible="state != 'draft'" string="Reset to Draft" type="object" groups="trip_ticket_tms.group_trip_ticket_user" data-hotkey="r"/>
-                    <button name="action_cancel" invisible="state != 'cancel'" string="Cancel" type="object" groups="trip_ticket_tms.group_trip_ticket_user" data-hotkey="c"/>
+                    <button name="action_draft" invisible="state == 'draft'" string="Reset to Draft" type="object" groups="trip_ticket_tms.group_trip_ticket_user" data-hotkey="r"/>
+                    <button name="action_cancel" invisible="state == 'cancel'" string="Cancel" type="object" groups="trip_ticket_tms.group_trip_ticket_user" data-hotkey="c"/>
+
+                    <button name="print_trip_ticket" class="oe_highlight" invisible="state in ['draft','cancel']" string="Print Trip Ticket" type="object" data-hotkey="p" />
+
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm,loading_start,loading_end,in_transit,delivered,done"/>
                 </header>
                 <sheet>
@@ -65,13 +68,14 @@
       </field>
     </record>
 
-    <frecord id="trip_ticket_view_tree" model="ir.ui.view">
+    <record id="trip_ticket_view_tree" model="ir.ui.view">
         <field name="name">trip_ticket_tms.tree</field>
         <field name="model">trip.ticket</field>
         <field name="arch" type="xml">
             <tree string="Trip Ticket" default_order="create_date desc" multi_edit="1" sample="1">
                 <field name="create_date" optional="show"/>
                 <field name="name" decoration-bf="1"/>
+                <field name="description" decoration-bf="1"/>
                 <field name="scheduled_date" optional="show"/>
                 <field name="state" optional="show"/> 
                 <field name="vehicle_id" optional="show"/>
@@ -85,4 +89,9 @@
                 <field name="create_uid" optional="show"/>
             </tree>
         </field>
+    </record>
+
+
+    <!-- Reports -->
+
 </odoo>

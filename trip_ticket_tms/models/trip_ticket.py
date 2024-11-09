@@ -104,7 +104,6 @@ class TripTicket(models.Model):
             rec.state = "loading_end"
             rec.loading_end_datetime = fields.datetime.now()
 
-
     def action_in_transit(self):
         for rec in self:
             rec.state = "in_transit"
@@ -125,6 +124,11 @@ class TripTicket(models.Model):
             for transfer in rec.picking_ids:
                 transfer.button_validate()
             
+    
+    def print_trip_ticket(self):
+        report_action = self.env.ref('trip_ticket_tms.action_report_trip_ticket')
+        return report_action.report_action(self)
+    
     
     @api.model_create_multi
     def create(self, vals_list):
