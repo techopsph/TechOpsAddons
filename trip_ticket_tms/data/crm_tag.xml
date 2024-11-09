@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+        <!--  crm categories -->
+        <record id="trip_ticket_tms_driver" model="crm.tag">
+            <field name="name">Driver</field>
+            <field name="color" eval="1"/>
+        </record>
+        <record id="trip_ticket_tms_helper" model="crm.tag">
+            <field name="name">Helper</field>
+            <field name="color" eval="2"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,51 @@
+<odoo>
+
+    <!-- Actions -->
+    <record id="action_trip_tickets" model="ir.actions.act_window">
+        <field name="name">Trip Tickets</field>
+        <field name="res_model">trip.ticket</field>
+        <field name="view_mode">tree,form,kanban,calendar,pivot</field>
+        <field name="context">{ 'default_scheduled_date': current_date, 'default_name': 'TRIP/' }</field>
+        <!-- field name="context">{ 'default_scheduled_date': current_date, 'default_name': 'TRIP/' + current_date + '/' }</field -->
+    </record>
+    <record id="action_trip_ticket_lines" model="ir.actions.act_window">
+        <field name="name">Trip Ticket Lines</field>
+        <field name="res_model">stock.picking</field>
+        <field name="view_mode">tree,kanban,pivot</field>
+        <field name="domain">[('batch_id', '!=', False), ('trip_ticket_id', '!=', False)]</field>
+    </record>
+
+    <!-- Main Menu -->
+    <menuitem
+        id="root"
+        name="Trip Ticket"
+        sequence="10"
+        web_icon="trip_ticket_tms,static/description/icon.png"
+    />
+
+    <!-- Menus -->
+    <menuitem id="trip_ticket" name="Trip Tickets" parent="root" />
+    <menuitem id="trip_ticket_reports" name="Reports" parent="root" />
+    
+    <!-- Trip Ticket Menu -->
+
+    <menuitem
+        id="menu_trip_tickets"
+        name="Trip Tickets"
+        action="action_trip_tickets"
+        parent="trip_ticket"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_trip_ticket_lines"
+        name="Trip Ticket Lines"
+        action="action_trip_ticket_lines"
+        parent="trip_ticket"
+        sequence="10"
+    />
+
+    
+
+
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_trip_ticket_user,trip.ticket user,model_trip_ticket,group_trip_ticket_user,1,1,1,1
+access_trip_ticket_manager,trip.ticket manager,model_trip_ticket,group_trip_ticket_manager,1,1,1,1

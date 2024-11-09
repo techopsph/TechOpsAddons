@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="0">
+
+    <record model="res.groups" id="group_trip_ticket_user">
+        <field name="name">Trip Ticket User</field>
+    </record>
+    <record model="res.groups" id="group_trip_ticket_manager">
+        <field name="name">Trip Ticket Manager</field>
+        <field name="implied_ids" eval="[(4, ref('group_trip_ticket_user'))]"/>
+    </record>
+
+</data>
+</odoo>

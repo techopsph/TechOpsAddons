@@ -1,0 +1,21 @@
+{
+    "name": "Trip Ticket",
+    "summary": "Trip Ticket for Transport Management System to customers",
+    "version": "17.0",
+    "category": "Logistics",
+    "website": "https://techops.ph",
+    "author": "EL Abquina, Tech Ops PH",
+    "license": "AGPL-3",
+    "application": True,
+    "installable": True,
+    "depends": ["sale_stock", "fleet", "contacts"],
+    "data": [ 
+        "data/crm_tag.xml",
+        "data/ir_sequence_data.xml",
+        "security/trip_ticket.xml",
+        "security/ir.model.access.csv",
+        "views/menu_actions.xml",
+        "views/stock_picking.xml",
+        "views/trip_ticket.xml",
+    ],
+}

@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="trip_ticket_tms_view_form">
+      <field name="name">trip_ticket.stock.picking.form</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"/>
+      <field name="arch" type="xml">
+        <data>
+            <field name="backorder_id" position="after">
+                <field name="trip_ticket_id"/>
+                <field name="trip_ticket_scheduled_date"/>
+                <field name="vehicle_id"/>
+                <field name="driver"/>
+                <field name="helper"/>
+                <field name="helper2"/>
+                <field name="helpers" widget="many2many_tags"/>
+            </field>
+        </data>
+      </field>
+    </record>
+
+  </data>
+</odoo>
