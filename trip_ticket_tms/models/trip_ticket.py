@@ -132,7 +132,6 @@ class TripTicket(models.Model):
     
     @api.model_create_multi
     def create(self, vals_list):
-        """ Create a sequence for the student model """
         for vals in vals_list:
             if vals.get('name', _('TRIP/')) == _('TRIP/'):
                 vals['name'] = (self.env['ir.sequence'].
