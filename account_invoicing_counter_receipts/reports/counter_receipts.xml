@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_counter_receipts">
+    
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+
+            <t t-call="web.external_layout">
+                <div class="page" style="padding-top: 25mm;">
+                        <div class="row mt16">
+                          <div class="col-6">
+                              <h3><strong><span t-field="o.name"/></strong></h3>
+                          </div>
+                        </div>
+                        
+                        <t t-set="address">
+                          <div class="row" style="min-height: 30mm;"></div>
+                          <address t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                          <!--div t-if="o.partner_id.vat" class="">
+                              <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_taid_label"/>
+                              <t t-else="">Tax ID No.</t>: <span t-field="o.partner_id.vat"/></div-->
+                        </t>
+                        
+                        <div id="informations" class="row mt8 mb8" style="font-size: 95%;">
+                          
+                            <div class="col-6">
+                              <div class="" t-if="o.partner_id" name="partner_id">
+                                  <strong>Partner To:</strong>
+                                  <span class="m-0" t-field="o.partner_id"/>
+                              </div>
+                              <div class="" t-if="o.date" name="invoice_date">
+                                  <strong>Date:</strong>
+                                  <span class="m-0" t-field="o.date"/>
+                              </div>
+                            </div>
+                          
+                            <div class="col-6">
+                              <div class="=" t-if="o.prepared_by" name="prepared_by">
+                                  <strong>Prepared By:</strong>
+                                  <span class="m-0" t-field="o.prepared_by"/>
+                              </div>
+                              <div class="=" t-if="o.received_by" name="received_by">
+                                  <strong>Source:</strong>
+                                  <span class="m-0" t-field="o.received_by"/>
+                              </div>
+                            </div>
+                        </div>
+    
+    
+                        <table class="table-condensed table-bordered table-sm o_main_table" name="invoice_line_table" style="width: 100%; font-size: 90%;">
+                            <thead>
+                                <tr>
+                                    <t t-set="colspan" t-value="6"/>
+                                    <th name="th_description" class="text-left" style="width: 10%;"><span>Date</span></th>
+                                    <th name="th_description" class="text-left" style="width: 20%;" colspan="2"><span>Invoice No.</span></th>
+                                    <th name="th_description" class="text-end" style="width: 10%;"><span>Amount</span></th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody class="invoice_tbody">	
+	                                
+	                                <t t-set="lines" t-value="o.move_ids"/>		
+	                                  <t t-foreach="lines" t-as="line">	
+
+	                                    <tr style="padding: 0; margin: 0;" t-att-class="'bg-200 font-weight-bold o_line_section'">		
+	                                        
+	                                        <td><span t-field="line.invoice_date" t-options="{'widget': 'text'}"/></td>
+	                                        <td><span t-field="line.name" t-options="{'widget': 'text'}"/></td>
+	                                        <td><span t-field="line.sales_invoice_number" t-options="{'widget': 'text'}"/></td>
+	                                        <td><span t-field="line.amount_total_signed"/></td>
+                                                
+  	                                 </tr>
+  	                                 
+  	                               </t>
+                            </tbody>
+                        </table>
+    
+                        
+                        <div class="clearfix" style="font-size: 13px; padding: 2mm; border-bottom: 1px solid black; width: 90%">
+                          
+                            <div class="row" name="receipt-signature">
+                              <div class="col-7" style="padding-top: 20mm;">
+                                  <div style="border-top: 2px solid black; text-align: center;">
+                                        SIGNATURE OVER PRINTED NAME
+                                  </div>
+                              </div>
+                              <div class="col-5 text-end">
+                                  Prepared By: <span t-field="o.prepared_by"/><br /><br />
+                                  Approved By: <span t-field="o.received_by"/><br />
+                              </div>
+                            </div>
+                            
+                            
+                          
+                        </div>
+                        
+                      </div>  
+            </t>
+            </t>
+        </t>
+
+    </template>
+
+    <template id="report_counter_receipts_direct_print">
+    
+        <html t-att-lang="lang and lang.replace('_', '-')" t-att-data-report-margin-top="data_report_margin_top" t-att-data-report-header-spacing="data_report_header_spacing" t-att-data-report-dpi="data_report_dpi" t-att-data-report-landscape="data_report_landscape" t-att-web-base-url="web_base_url">
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="initial-scale=1"/>
+            <title><t t-esc="title or 'Odoo Report'"/></title>
+            <t t-call-assets="web.report_assets_common" t-js="false"/>
+        </head>
+        <body class="container">
+            <div id="wrapwrap">
+                <main>
+                
+                <div class="" style="text-transform: uppercase; font-size: 16px; line-height: 110%;">  
+                    
+                    <t t-foreach="docs" t-as="o">
+                        
+                        <div class="page" style="width: 100%; max-width: 100%;">
+                            
+                            <div id="date" class="row" style="position: fixed; top: 52mm; width: 97% !important;">
+                            <div class="col-19"></div>
+                                <div class="col-3" style="text-align: right; padding-left: 8mm;">
+                                <span t-field="o.date" />
+                                </div>
+                            </div>
+                            
+                            <div id="information" class="row" style="position: fixed; top: 65mm; height: 210px; max-height: 210px;">
+                            
+                            <div class="col-12" style="position: fixed; top: 65mm; left: 30mm; margin-top: -4mm;">
+                                <span t-esc="o.partner_id.name"/>
+                            </div>
+                            
+                            </div>
+                            
+                            
+                            <div id="table-details" class="row" style="position: fixed; top: 95mm; width: 100% !important;">
+                                
+                            <table class="table table-sm o_main_table" name="invoice_line_table" style="width: 98% !important; font-size: 100%; margin-left: -1mm;">
+                                <tbody class="invoice_tbody">
+                                    <t t-set="current_subtotal" t-value="0"/>
+                                    <t t-set="lines" t-value="o.move_ids"/>
+        
+                                    <t t-foreach="lines" t-as="line">
+                                        <tr>
+                                            <td style="width: 22%"><span t-field="line.invoice_date"/></td>
+                                            <td style="width: 25%"><span t-field="line.sales_invoice_number"/></td>
+                                            <td style="width: 15%"><span t-field="line.amount_total_signed"/></td>
+                                            <td style="width: 25%"> </td>
+                                            <td style="width: 15%"><span t-field="line.amount_total_signed"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            </div>
+                            
+                            <div id="prepared" class="row" style="position: fixed; top: 245mm; height: 210px; max-height: 210px;">
+                            
+                            <div class="col-6" style="position: fixed; top: 245mm; left: 10mm; margin-top: 0mm;">
+                                <span t-esc="o.prepared_by.name"/>
+                            </div>
+                            
+                            </div>
+                            
+                        </div>
+                        
+                    </t>  
+                    
+                </div>
+                
+                </main>
+            </div>
+        </body>
+        </html>
+
+    </template>
+
+</odoo>

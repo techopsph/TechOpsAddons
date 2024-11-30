@@ -1,0 +1,19 @@
+<odoo>
+
+    <!-- Actions -->
+    <record id="action_counter_receipts" model="ir.actions.act_window">
+        <field name="name">Counter Receipts</field>
+        <field name="res_model">counter.receipts</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="context">{ 'default_sdate': current_date, 'default_name': 'COUNTER/' }</field>
+    </record>
+
+    <menuitem
+        id="menu_counter_receipts"
+        name="Counter Receipts"
+        action="action_counter_receipts"
+        parent="account.menu_finance_receivables"
+        sequence="10"
+    />
+    
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="counter_receipts_view_form" model="ir.ui.view">
+      <field name="name">counter_receipts.form</field>
+      <field name="model">counter.receipts</field>
+      <field name="arch" type="xml">
+            <form string="Counter Receipts">
+                <header>
+                    <button name="action_confirm" string="Confirm" invisible="state != 'draft'" type="object" class="btn-primary" groups="account.group_account_invoice"/>
+                    <button name="action_done" string="Validate" invisible="state == 'done'" type="object" class="btn-primary" groups="account.group_account_invoice"/>
+                    <button name="action_cancel" string="Cancel" invisible="state == 'cancel'" type="object" class="btn-secondary" groups="account.group_account_invoice"/>
+                    <button name="action_draft" string="Reset to Draft" invisible="state == 'draft'" type="object" class="btn-secondary" groups="account.group_account_invoice"/>
+                    <button name="print_counter_receipts" class="oe_highlight" invisible="state in ['draft','cancel']" string="Print" type="object" data-hotkey="p" />
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done, cancel"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field string="COUNTER" name="name" readonly="1" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="partner_id"/>
+                            <field name="counter_receipt_number"/>
+                            <field name="line_count"/>
+                        </group>
+                        <group>
+                            <field name="note"/>
+                            <field name="collector"/>
+                            <field name="prepared_by"/>
+                            <field name="received_by"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Invoices">
+                            <field name="move_ids" banner_route="/account/account_invoice_onboarding" domain="[('partner_id', '=', partner_id), ('move_type', 'in', ['out_invoice', 'out_receipt']), ('state', 'in', ['post', 'posted'])]">
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        
+      </field>
+    </record>
+
+    <record id="counter_receipts_view_tree" model="ir.ui.view">
+        <field name="name">counter_receipts.tree</field>
+        <field name="model">counter.receipts</field>
+        <field name="arch" type="xml">
+            <tree string="Counter Receipts" default_order="create_date desc" sample="1">
+                <field name="date"/>
+                <field name="name" decoration-bf="1"/>
+                <field name="partner_id"/>
+                <field name="state" widget="badge"/> 
+                <field name="collector"/> 
+                <field name="prepared_by"/> 
+                <field name="create_uid"/>
+                <field name="create_date"/>
+            </tree>
+        
+        </field>
+    </record>
+
+
+    <!-- Reports -->
+
+</odoo>
