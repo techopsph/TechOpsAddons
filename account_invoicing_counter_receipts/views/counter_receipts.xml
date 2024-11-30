@@ -6,11 +6,11 @@
       <field name="arch" type="xml">
             <form string="Counter Receipts">
                 <header>
-                    <button name="action_confirm" string="Confirm" invisible="state != 'draft'" type="object" class="btn-primary" groups="account.group_account_invoice"/>
-                    <button name="action_done" string="Validate" invisible="state == 'done'" type="object" class="btn-primary" groups="account.group_account_invoice"/>
-                    <button name="action_cancel" string="Cancel" invisible="state == 'cancel'" type="object" class="btn-secondary" groups="account.group_account_invoice"/>
-                    <button name="action_draft" string="Reset to Draft" invisible="state == 'draft'" type="object" class="btn-secondary" groups="account.group_account_invoice"/>
-                    <button name="print_counter_receipts" class="oe_highlight" invisible="state in ['draft','cancel']" string="Print" type="object" data-hotkey="p" />
+                    <button name="action_confirm" string="Confirm" states="draft" type="object" class="btn-primary" groups="account.group_account_invoice"/>
+                    <button name="action_done" string="Validate" states="in_progress" type="object" class="btn-primary" groups="account.group_account_invoice"/>
+                    <button name="action_cancel" string="Cancel" states="in_progress,done" type="object" class="btn-secondary" groups="account.group_account_invoice"/>
+                    <button name="action_draft" string="Reset to Draft" states="in_progress,done,cancel" type="object" class="btn-secondary" groups="account.group_account_invoice"/>
+                    <button name="print_counter_receipts" class="oe_highlight" states="in_progress,done" string="Print" type="object" data-hotkey="p" />
 
                     <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done, cancel"/>
                 </header>
