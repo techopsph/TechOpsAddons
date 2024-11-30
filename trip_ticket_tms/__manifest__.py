@@ -1,7 +1,7 @@
 {
     "name": "Trip Ticket",
     "summary": "Trip Ticket for Transport Management System to customers",
-    "version": "17.0",
+    "version": "16.0",
     "category": "Logistics",
     "website": "https://techops.ph",
     "author": "EL Abquina, Tech Ops PH",

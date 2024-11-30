@@ -1,7 +1,7 @@
 {
     "name": "Sale Order Line Count",
     "summary": "Display the number of order lines in the sale order",
-    "version": "17.0",
+    "version": "16.0",
     "category": "Sale",
     "website": "https://techops.ph",
     "author": "EL Abquina, Tech Ops PH",

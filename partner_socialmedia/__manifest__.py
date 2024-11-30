@@ -2,7 +2,7 @@
     "name": "Partner Social Media",
     "summary": "Social Media Links for a Contact",
     "category": "Partner Contacts",
-    "version": "17.0",
+    "version": "16.0",
     "license": "AGPL-3",
     "depends": ["contacts"],
     "data": [

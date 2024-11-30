@@ -8,7 +8,7 @@
     'author': "Tech Ops PH",
     'website': "https://techops.ph",
     'category': 'Invoicing',
-    'version': '17.0',
+    'version': '16.0',
     'depends': ['account_invoicing_manual_fields'],
 
     # always loaded
