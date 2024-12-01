@@ -10,11 +10,11 @@
                 <page string="Trip Ticket" name="trip_ticket">
                     <group>
                         <group>
-                            <field name="vehicle_id" readonly="trip_ticket_id != False"/>
-                            <field name="driver"  readonly="trip_ticket_id != False"/>
-                            <field name="helper" readonly="trip_ticket_id != False"/>
-                            <field name="helper2" readonly="trip_ticket_id != False"/>
-                            <field name="helpers" widget="many2many_tags" readonly="trip_ticket_id != False"/>
+                            <field name="vehicle_id" attrs="{ 'readonly': [('trip_ticket_id', '!=', False)] }"/>
+                            <field name="driver" attrs="{ 'readonly': [('trip_ticket_id', '!=', False)] }"/>
+                            <field name="helper" attrs="{ 'readonly': [('trip_ticket_id', '!=', False)] }"/>
+                            <field name="helper2" attrs="{ 'readonly': [('trip_ticket_id', '!=', False)] }"/>
+                            <field name="helpers" widget="many2many_tags" attrs="{ 'readonly': [('trip_ticket_id', '!=', False)] }"/>
                         </group>
                         <group>
                             <field name="trip_ticket_id"/>

@@ -8,7 +8,7 @@
     "license": "AGPL-3",
     "application": True,
     "installable": True,
-    "depends": ["sale_stock", "fleet", "contacts"],
+    "depends": ["sale_stock", "stock_picking_batch", "fleet", "contacts"],
     "data": [ 
         "data/crm_tag.xml",
         "data/report_paperformat.xml",
