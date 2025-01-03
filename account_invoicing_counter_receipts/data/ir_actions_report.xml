@@ -1,0 +1,25 @@
+<odoo>
+
+    <record id="action_report_counter_receipts" model="ir.actions.report">
+        <field name="name">Print Counter Receipt</field>
+        <field name="model">counter.receipts</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">account_invoicing_counter_receipts.report_counter_receipts</field>
+        <field name="report_file">account_invoicing_counter_receipts.report_counter_receipts</field>
+        <field name="print_report_name">'Counter Receipt - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_counter_receipts"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_counter_receipts_direct_print" model="ir.actions.report">
+        <field name="name">Print Counter Receipt Direct Print</field>
+        <field name="model">counter.receipts</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">account_invoicing_counter_receipts.report_counter_receipts_direct_print</field>
+        <field name="report_file">account_invoicing_counter_receipts.report_counter_receipts_direct_print</field>
+        <field name="print_report_name">'Counter Receipt - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_counter_receipts"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>
