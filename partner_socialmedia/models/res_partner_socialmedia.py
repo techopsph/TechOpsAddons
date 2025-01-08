@@ -36,7 +36,7 @@ class ResPartnerSocialMedia(models.Model):
     )
     
     partner_id = fields.Many2one(
-        string="Partner", required=True, comodel_name="res.partner", ondelete="cascade"
+        string="Partner", required=True, comodel_name="res.partner", ondelete="restrict"
     )
     
     active = fields.Boolean(default=True)

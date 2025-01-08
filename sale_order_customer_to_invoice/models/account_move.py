@@ -9,6 +9,6 @@ class AccountMove(models.Model):
         string="Sale Order Customer",
         store=True,
         readonly=True,
-        ondelete="restrict",
         copy=True,
+        ondelete="restrict",
     )

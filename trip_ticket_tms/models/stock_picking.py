@@ -37,7 +37,6 @@ class StockPicking(models.Model):
                                             related="sale_id.partner_id",
                                             store=True,
                                             readonly=True,
-                                            ondelete="restrict",
                                             copy=True)
      
     
