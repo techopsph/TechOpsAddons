@@ -9,7 +9,7 @@ class StockPicking(models.Model):
     trip_ticket_id = fields.Many2one(
         comodel_name='trip.ticket',
         string="Trip Ticket",
-        required=False, ondelete='cascade', index=True, copy=False)
+        required=False, ondelete='restrict', index=True, copy=False)
     
     trip_ticket_sequence = fields.Integer(compute='_compute_sequence',
                               store=True, 
@@ -34,6 +34,7 @@ class StockPicking(models.Model):
     
     sale_order_customer = fields.Many2one("res.partner",
                                             string="Sale Order Customer",
+                                            related="sale_id.partner_id",
                                             store=True,
                                             readonly=True,
                                             ondelete="restrict",
