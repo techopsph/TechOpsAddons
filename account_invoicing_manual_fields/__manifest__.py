@@ -6,6 +6,7 @@
         Additional Text Fields and Relation Fields for Manual Sales Invoicing
         Custom Invoice Fields
         Sales Invoice Booklet
+        Account Payments Fields
     """,
     'author': "Tech Ops PH",
     'website': "https://techops.ph",
@@ -16,6 +17,7 @@
     # always loaded
     'data': [
         'views/account_move.xml',
+        'views/account_payment.xml',
     ],
 }
 

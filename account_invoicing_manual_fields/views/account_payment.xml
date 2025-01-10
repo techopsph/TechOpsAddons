@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="view_payment_form">
+      <field name="name">account.payment.form</field>
+      <field name="model">account.payment</field>
+      <field name="inherit_id" ref="account.view_account_payment_form"/>
+      <field name="priority" eval="100"/>
+      <field name="arch" type="xml">
+        <data>
+          <field name="ref" position="after">
+                <field name="collection_receipt_number"/>
+                <field name="provisional_receipt_number"/>
+          </field>
+        </data>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_payment_tree">
+      <field name="name">account.payment.tree</field>
+      <field name="model">account.payment</field>
+      <field name="inherit_id" ref="account.view_account_payment_tree"/>
+      <field name="priority" eval="100"/>
+      <field name="arch" type="xml">
+        <data>
+          <field name="journal_id" position="before">
+                <field name="collection_receipt_number" optional="show"/>
+                <field name="provisional_receipt_number" optional="show"/>
+          </field>
+        </data>
+      </field>
+    </record>
+
+  </data>
+</odoo>
+
