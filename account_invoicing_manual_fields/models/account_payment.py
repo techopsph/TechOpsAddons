@@ -2,7 +2,7 @@ import datetime
 from odoo import models, fields, api
 
 
-class AccountMove(models.Model):
+class AccountPayment(models.Model):
     _inherit = 'account.payment'
     
     provisional_receipt_number = fields.Char(string='Provisional Receipt Number', store=True)
