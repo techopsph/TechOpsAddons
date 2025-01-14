@@ -11,6 +11,7 @@
           <field name="ref" position="after">
                 <field name="collection_receipt_number"/>
                 <field name="provisional_receipt_number"/>
+                <field name="remarks"/>
           </field>
         </data>
       </field>
