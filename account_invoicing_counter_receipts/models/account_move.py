@@ -7,7 +7,9 @@ class AccountMove(models.Model):
     counter_receipt_id = fields.Many2one(
         comodel_name='counter.receipts',
         string="Counter Receipt",
-        required=False, ondelete='cascade', index=True, copy=False, readonly=True)
+        required=False, 
+        ondelete='set null',
+        index=True, copy=False, readonly=True)
     
     counter_receipt_date = fields.Date(
         string='Counter Receipt Date', 
