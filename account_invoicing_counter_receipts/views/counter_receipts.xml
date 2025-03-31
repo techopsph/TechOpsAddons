@@ -34,7 +34,7 @@
                     </group>
                     <notebook>
                         <page string="Invoices">
-                            <field name="move_ids" banner_route="/account/account_invoice_onboarding" domain="[('partner_id', '=', partner_id), ('move_type', 'in', ['out_invoice', 'out_receipt']), ('state', 'in', ['post', 'posted'])]">
+                            <field name="move_ids" banner_route="/account/account_invoice_onboarding" domain="[('partner_id', '=', partner_id), ('move_type', 'in', ['out_invoice', 'out_receipt']), ('state', 'in', ['post', 'posted']), ('counter_receipt_id', '=', False)]">
                             </field>
                         </page>
                     </notebook>
