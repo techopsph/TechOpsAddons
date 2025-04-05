@@ -2,8 +2,9 @@ from odoo import _, fields, models, api
 from odoo.exceptions import UserError
 
 class CounterReceipts(models.Model):
+    "Counter Receipts for grouping Customer Invoices or Vendor Bills"
     _name = "counter.receipts"
-    _description = "Counter Receipts for grouping Customer Invoices or Vendor Bills"
+    _description = "Counter Receipts"
     _order = "date desc"
     _inherit = "mail.thread"
     
