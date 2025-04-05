@@ -16,7 +16,8 @@ class CounterReceipts(models.Model):
     
     line_count = fields.Integer(string='Line Count', compute='_compute_line_count')
     
-    move_ids = fields.Many2many('account.move', string='Account Moves')
+    move_ids = fields.Many2many('account.move', 
+                                string='Account Moves')
     
     note = fields.Text(string='Notes')
     partner_id = fields.Many2one('res.partner', string='Customer')
@@ -64,6 +65,29 @@ class CounterReceipts(models.Model):
                 vals['name'] = (self.env['ir.sequence'].
                 next_by_code('counter.receipts'))
         return super().create(vals_list)
+
+    def write(self, vals):
+        if 'move_ids' in vals:
+            for record in self:
+                # Get original move_ids
+                old_moves = record.move_ids
+
+                # Simulate the new move_ids after update
+                new_moves = self.browse([])  # default empty
+                move_commands = vals.get('move_ids', [])
+                if move_commands:
+                    new_moves = old_moves.browse([cmd[1] for cmd in move_commands if cmd[0] == 4])
+                    if any(cmd[0] == 6 for cmd in move_commands):
+                        move_ids = [cmd[2] for cmd in move_commands if cmd[0] == 6][0]
+                        new_moves = self.env['account.move'].browse(move_ids)
+
+                # Find moves that were removed
+                removed_moves = old_moves - new_moves
+
+                # Unset their counter_receipt_id
+                removed_moves.write({'counter_receipt_id': False})
+
+        return super(CounterReceipts, self).write(vals)
 
     def unlink(self):
         for record in self:
