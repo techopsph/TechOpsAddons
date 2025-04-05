@@ -49,10 +49,15 @@ class CounterReceipts(models.Model):
     def action_cancel(self):
         for record in self:
             record.state = 'cancel'
+            # Unset counter_receipt_id on all linked account.move entries
+            record.move_ids.write({'counter_receipt_id': False})
             
     def action_draft(self):
         for record in self:
             record.state = 'draft'
+            # Unset counter_receipt_id on all linked account.move entries
+            record.move_ids.write({'counter_receipt_id': False})
+
 
     def print_counter_receipts(self):
         report_action = self.env.ref('account_invoicing_counter_receipts.action_report_counter_receipts')
