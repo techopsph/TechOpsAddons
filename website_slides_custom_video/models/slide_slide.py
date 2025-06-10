@@ -6,7 +6,7 @@ class Slide(models.Model):
 
     video_source_type = fields.Selection(
         selection_add=[('custom', 'Custom')],
-        ondelete={'custom': 'set default'},
+        ondelete={'custom': 'set null'},
     )
 
     embed_code_custom = fields.Html('Custom Embed Code', sanitize=False)
