@@ -33,7 +33,7 @@ class Slide(models.Model):
             embed_code_external = False
             if slide.video_source_type == 'custom':
                 video_url = Markup('<iframe src="%s" class="o_wslides_iframe_viewer" allowFullScreen="true" height="%s" width="%s" frameborder="0" aria-label="%s"></iframe>')
-                embed_code = video_url % (slide.video_url, 1600, 900, slide.video_title)
-                
+                embed_code = video_url % (slide.video_url, 1600, 900, slide.name)
+                embed_code_external = video_url % (slide.video_url, 1600, 900, slide.name)
             slide.embed_code = embed_code
             slide.embed_code_external = embed_code
