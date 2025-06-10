@@ -7,7 +7,7 @@
     "website": "https://techops.ph",
     "depends": ["website_slides"],
     "data": [
-        "views/slide_views.xml"
+        "views/slide_slide_views.xml"
     ],
     "installable": True,
     "auto_install": False,
