@@ -9,6 +9,12 @@
     "data": [
         "views/slide_slide_views.xml"
     ],
+    "assets": {
+        "web.assets_frontend": [
+            "website_slides_custom_video/static/src/js/slides_course_fullscreen_player.js",
+            "website_slides_custom_video/static/src/xml/website_slides_fullscreen.xml",
+        ],
+    },
     "installable": True,
     "auto_install": False,
     "application": False
