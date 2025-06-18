@@ -19,5 +19,7 @@
         'views/account_move.xml',
         'views/account_payment.xml',
     ],
+    
+    'license': 'LGPL-3',
 }
 

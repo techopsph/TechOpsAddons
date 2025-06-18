@@ -21,5 +21,7 @@
         'views/account_move.xml',
         'views/menu_actions.xml',
     ],
+    
+    'license': 'LGPL-3',
 }
 
