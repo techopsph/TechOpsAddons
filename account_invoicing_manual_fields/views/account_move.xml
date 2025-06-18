@@ -9,13 +9,13 @@
       <field name="arch" type="xml">
         <data>
           
-          <xpath expr="//sheet//group/field[@name='currency_id']" position="after">
+          <group id="header_right_group" position="inside">
             <field name="sales_invoice_number"/>
             <field name="document_number"/>
             <field name="remarks"/>
             <field name="prepared_by"/>
             <field name="approved_by"/>
-          </xpath>
+          </group>
 
         </data>
       </field>
