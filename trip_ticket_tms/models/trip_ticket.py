@@ -5,7 +5,7 @@ from odoo.tools import config
 
 class TripTicket(models.Model):
     _name = "trip.ticket"
-    _description = "Trip Ticket for Transport Management System to customers"
+    _description = "Trip Ticket"
     _order = "create_date desc"
     _inherit = "mail.thread"
     
